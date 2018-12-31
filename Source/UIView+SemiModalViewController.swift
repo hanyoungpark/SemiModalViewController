@@ -2,39 +2,39 @@ import UIKit
 
 extension UIView {
     
-    public var width: CGFloat {
+    public var semiWidth: CGFloat {
         get {
             return frame.size.width
         }
         set {
-            frame = CGRect(x: x, y: y, width: newValue, height: height)
+            frame = CGRect(x: semiX, y: semiY, width: newValue, height: semiHeight)
         }
     }
     
-    public var height: CGFloat {
+    public var semiHeight: CGFloat {
         get {
             return frame.size.height
         }
         set {
-            frame = CGRect(x: x, y: y, width: width, height: newValue)
+            frame = CGRect(x: semiX, y: semiY, width: semiWidth, height: newValue)
         }
     }
     
-    public var x: CGFloat {
+    public var semiX: CGFloat {
         get {
             return frame.origin.x
         }
         set {
-            frame = CGRect(x: newValue, y: y, width: width, height: height)
+            frame = CGRect(x: newValue, y: semiY, width: semiWidth, height: semiHeight)
         }
     }
     
-    public var y: CGFloat {
+    public var semiY: CGFloat {
         get {
             return frame.origin.y
         }
         set {
-            frame = CGRect(x: x, y: newValue, width: width, height: height)
+            frame = CGRect(x: semiX, y: newValue, width: semiWidth, height: semiHeight)
         }
     }
     

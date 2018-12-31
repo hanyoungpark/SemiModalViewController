@@ -73,7 +73,7 @@ extension UIViewController {
                                                object: nil)
         
         let semiViewHeight = view.frame.size.height
-        let semiViewFrame = CGRect(x: 0, y: targetView.height - semiViewHeight, width: targetView.width, height: semiViewHeight)
+        let semiViewFrame = CGRect(x: 0, y: targetView.semiHeight - semiViewHeight, width: targetView.semiWidth, height: semiViewHeight)
         
         let overlay = overlayView()
         targetView.addSubview(overlay)
@@ -160,7 +160,7 @@ extension UIViewController {
         
         if optionForKey(.pushParentBack) as! Bool {
             let animationGroup = PushBackAnimationGroup(forward: true,
-                                                        viewHeight: parentTargetView().height,
+                                                        viewHeight: parentTargetView().semiHeight,
                                                         options: self.options())
             snapshotView.layer.add(animationGroup, forKey: "pushedBackAnimation")
         }
@@ -200,8 +200,8 @@ extension UIViewController {
         
         UIView.animate(withDuration: duration, animations: {
             if transitionStyle == .slideUp {
-                let originX = UIDevice.isPad() ? (targetView.width - modal.width) / 2 : 0
-                modal.frame = CGRect(x: originX, y: targetView.height, width: modal.width, height: modal.height)
+                let originX = UIDevice.isPad() ? (targetView.semiWidth - modal.semiWidth) / 2 : 0
+                modal.frame = CGRect(x: originX, y: targetView.semiHeight, width: modal.semiWidth, height: modal.semiHeight)
             } else if transitionStyle == .fadeOut || transitionStyle == .fadeInOut {
                 modal.alpha = 0.0
             }
@@ -223,7 +223,7 @@ extension UIViewController {
         if let screenshot = overlay.subviews.first {
             if let pushParentBack = optionForKey(.pushParentBack) as? Bool , pushParentBack {
                 let animationGroup = PushBackAnimationGroup(forward: false,
-                                                            viewHeight: parentTargetView().height,
+                                                            viewHeight: parentTargetView().semiHeight,
                                                             options: self.options())
                 screenshot.layer.add(animationGroup, forKey: "bringForwardAnimation")
             }
